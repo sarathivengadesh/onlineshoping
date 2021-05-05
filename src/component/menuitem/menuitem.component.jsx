@@ -1,9 +1,9 @@
-import { queryAllByDisplayValue } from '@testing-library/dom';
 import React from 'react';
+import { withRouter } from 'react-router';
 import './menuitem.style.scss';
 
-const Menuitem = ({title,imageUrl,size})=>(
-    <div className={`${size} menu`}>
+const Menuitem = ({title,imageUrl,size,linkUrl,match,history})=>(
+    <div className={`${size} menu`} onClick={()=>history.push(`${match.url}${linkUrl}`)}>
         <div className='background-image'
          style={{
              backgroundImage:`url(${imageUrl})`
@@ -14,5 +14,5 @@ const Menuitem = ({title,imageUrl,size})=>(
         </div>
     </div>
 );
-
-export default Menuitem;
+ 
+export default withRouter(Menuitem);
